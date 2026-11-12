@@ -1,0 +1,220 @@
+/* styles.css */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Fredoka", "Trebuchet MS", sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.25) 0 2px, transparent 3px) 0 0 / 28px 28px,
+        linear-gradient(135deg, #3b4cca 0%, #2a75bb 50%, #1d4f91 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 16px;
+    color: #222;
+}
+
+main {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+h1 {
+    color: #ffde00;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 0 #cc0000, 4px 4px 0 #1a1a1a;
+    letter-spacing: 1px;
+}
+
+/* ---------- Busca ---------- */
+#formPoke {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    border-radius: 14px;
+    border: 3px solid #1a1a1a;
+    box-shadow: 0 4px 0 #1a1a1a;
+}
+
+#idPoke {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+    background: #fffbe6;
+    font-family: inherit;
+}
+
+#idPoke:focus {
+    outline: none;
+    border-color: #3b4cca;
+    box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.35);
+}
+
+#formPoke button {
+    padding: 10px 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: #fff;
+    background: #cc0000;
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 3px 0 #800000;
+    cursor: pointer;
+    transition: transform 0.08s, box-shadow 0.08s;
+}
+
+#formPoke button:hover {
+    background: #e00000;
+}
+
+#formPoke button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 #800000;
+}
+
+#msg {
+    color: #ffde00;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 #1a1a1a;
+    margin: 0;
+    min-height: 1.2em;
+}
+
+/* ---------- Carta ---------- */
+#resultado {
+    width: 100%;
+    display: none;              /* aparece quando houver resultado */
+    flex-direction: column;
+    align-items: stretch;
+    background: linear-gradient(180deg, #fdf6d8 0%, #f5e6a8 100%);
+    border: 6px solid #1a1a1a;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow:
+        0 0 0 3px #ffde00,
+        0 8px 0 #1a1a1a,
+        0 14px 24px rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+#resultado:not(:empty) {
+    display: flex;
+}
+
+/* Cabeçalho da carta (nome) */
+#nomePokemon {
+    margin: 0 0 8px;
+    padding: 6px 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #1a1a1a;
+    background: #fff;
+    border: 2px solid #1a1a1a;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* Área da ilustração */
+#imgPoke {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    margin: 0 auto 12px;
+    padding: 10px;
+    background: radial-gradient(circle, #ffffff 0%, #d8ecff 70%, #a9d2ff 100%);
+    border: 3px solid #1a1a1a;
+    border-radius: 12px;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Linhas de atributos */
+#basePoke,
+#alturaPoke,
+#pesoPoke {
+    margin: 0 0 6px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    background: #fff;
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+    color: #1a1a1a;
+}
+
+#basePoke {
+    border-left: 8px solid #cc0000;   /* tipo de energia vermelho */
+}
+
+#alturaPoke {
+    border-left: 8px solid #3b4cca;   /* azul */
+}
+
+#pesoPoke {
+    border-left: 8px solid #ffde00;   /* amarelo */
+}
+
+/* Mensagem de erro/carregando */
+#msg:empty::before {
+    content: "";
+}
+
+/* ---------- Status (barras) ---------- */
+#statsPoke {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 6px;
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+}
+
+.stat {
+    display: grid;
+    grid-template-columns: 110px 1fr 36px;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000105;
+}
+
+.stat-barra {
+    height: 10px;
+    background: #befff6;
+    border: 3px solid #1a1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.stat-preenchimento {
+    height: 100%;
+    background: linear-gradient(90deg, #005214, #33ff00);
+}
+
+.stat-valor {
+    text-align: right;
+}
